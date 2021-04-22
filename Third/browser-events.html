@@ -1,0 +1,54 @@
+<!-- Скрыть элемент по нажатию кнопки -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <input
+      type="button"
+      id="hider"
+      value="Нажмите, чтобы спрятать текст"
+      onclick="hide()"
+    />
+
+    <div id="text">Текст</div>
+
+    <script>
+      function hide() {
+        let text = document.getElementById("text");
+        text.hidden = true;
+      }
+    </script>
+  </body>
+</html>
+
+
+
+<!-- 
+Спрятать себя -->
+<script>
+  function hide(elem){
+    elem.hidden = true;
+  }
+</script>
+
+
+
+<!-- Какой обработчик запустится? -->
+<!-- button.addEventListener("click", () => alert("1"));
+button.removeEventListener("click", () => alert("1"));
+button.onclick = () => alert(2); -->
+<!-- Запустится первый и последний и выведет 1 потом 2 -->
+
+
+
+<!-- Добавить кнопку закрытия -->
+<script>
+  let panes = document.querySelectorAll('.pane');
+  for(let pane of panes) {
+    pane.insertAdjacentHTML("afterbegin", '<button class="remove-button">[x]</button>');
+    pane.firstChild.onclick = () => pane.remove();
+  }
+</script>
