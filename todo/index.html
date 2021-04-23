@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>To do App</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <h1>Tasks</h1>
+      <input
+        type="text"
+        class="newCategory"
+        placeholder="Add your new category"
+      />
+      <button type="submit" id="addbtn" onclick="addCategory()">+</button>
+      <div class="container">
+        <input type="text" class="newtask" placeholder="Add your new TODO" />
+        <select id="categories" onchange="change()">
+          <option value="">Category</option>
+        </select>
+
+        <button type="submit" id="addbtn" onclick="add()">+</button>
+      </div>
+      <div class="list">
+        <!-- <ul class = "box"> 
+            </ul> -->
+      </div>
+    </div>
+    <script src="js.js"></script>
+  </body>
+</html>
