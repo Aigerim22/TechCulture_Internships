@@ -36,7 +36,18 @@ body {
   padding-right: 10px;
   cursor: pointer;
 }
-#addbtn:hover {
+#clear {
+  color: white;
+  background-color: rgb(224, 28, 198);
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+}
+#addbtn:hover,
+#clear:hover {
   background-color: rgb(50, 211, 203);
 }
 i.fas {
