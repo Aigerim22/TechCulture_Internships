@@ -12,6 +12,10 @@ function addCategory() {
     let categoryName = document.createElement("h2");
     div.appendChild(categoryName);
     let list = document.createElement("ul");
+    let noTaskDiv = document.createElement("li");
+    noTaskDiv.id = "noTask";
+    noTaskDiv.innerHTML = "No tasks entered yet";
+    list.prepend(noTaskDiv);
     div.appendChild(list);
     categoryName.innerHTML = new_category.value;
     div.id = categoryName.textContent;
@@ -33,6 +37,9 @@ function add() {
       oChild = category.childNodes[i];
       if (collection[j].textContent === oChild.id) {
         if (new_task.value != "") {
+          let emptyLi = oChild.children[1].firstChild;
+          emptyLi.innerHTML = "";
+          emptyLi.style.listStyleType = "none";
           oChild.lastChild.append(elem);
         } else {
           alert("Enter the task!");
