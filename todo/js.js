@@ -1,6 +1,11 @@
-var category = document.querySelector(".list");
-var new_category = document.querySelector(".newCategory");
-let selectedOption = categories.options[categories.selectedIndex];
+const category = document.querySelector(".list");
+const new_category = document.querySelector(".newCategory");
+const selectedOption = categories.options[categories.selectedIndex];
+const itemList = document.getElementById("categories");
+const collection = itemList.selectedOptions;
+const new_task = document.querySelector(".newtask");
+const clearBtn = document.getElementById("clear");
+
 function addCategory() {
   if (new_category.value != "") {
     let div = document.createElement("div");
@@ -10,7 +15,7 @@ function addCategory() {
     div.appendChild(list);
     categoryName.innerHTML = new_category.value;
     div.id = categoryName.textContent;
-    var newOption = new Option(categoryName.innerHTML, "list");
+    let newOption = new Option(categoryName.innerHTML, "list");
     category.appendChild(div);
     categories.append(newOption);
   } else {
@@ -19,13 +24,9 @@ function addCategory() {
   new_category.value = "";
 }
 
-var itemList = document.getElementById("categories");
-let collection = itemList.selectedOptions;
-
-var new_task = document.querySelector(".newtask");
 function add() {
-  var elem = document.createElement("li");
-  var cnt = 0;
+  let elem = document.createElement("li");
+  elem.style.listStyleType = "none";
   elem.innerHTML = new_task.value;
   for (let i = 0; i < category.childNodes.length; i++) {
     for (let j = 0; j < collection.length; j++) {
@@ -33,24 +34,21 @@ function add() {
       if (collection[j].textContent === oChild.id) {
         if (new_task.value != "") {
           oChild.lastChild.append(elem);
-          cnt++;
         } else {
           alert("Enter the task!");
         }
-        // oChild.childNodes[0].append(cnt);
         new_task.value = "";
-        // oChild.append(oChild.lastChild.childNodes.length);
       }
     }
   }
 
-  var icon = document.createElement("i");
+  let icon = document.createElement("i");
   icon.classList.add("fas", "fa-trash-alt");
   elem.appendChild(icon);
   let trash = document.getElementsByClassName("fas", "fa-trash-alt");
   for (var i = 0; i < trash.length; i++) {
     trash[i].onclick = function () {
-      var curDiv = this.parentElement;
+      let curDiv = this.parentElement;
       curDiv.style.display = "none";
     };
   }
@@ -58,16 +56,12 @@ function add() {
   checkbox.type = "checkbox";
   checkbox.classList.add("check");
   checkbox.onclick = function () {
-    if (checkbox.checked == true) {
-      checkbox.parentElement.style.textDecoration = "line-through";
-    } else {
-      checkbox.parentElement.style.textDecoration = "none";
-    }
+    return checkbox.checked
+      ? (checkbox.parentElement.style.textDecoration = "line-through")
+      : (checkbox.parentElement.style.textDecoration = "none");
   };
   elem.insertBefore(checkbox, elem.childNodes[0]);
 }
-
-var clearBtn = document.getElementById("clear");
 
 clearBtn.onclick = function () {
   category.innerHTML = "";
