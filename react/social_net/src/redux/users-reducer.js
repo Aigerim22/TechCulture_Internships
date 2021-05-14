@@ -3,19 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-  users: [],
-
-  // users: [
-  //   // {
-  //   //         id: 1,
-  //   //         photoUrl:
-  //   //           "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkVwz27GAcDQjKnJW1I6zsc6aKTM5SRkZCeTgDn6uOyic",
-  //   //         followed: false,
-  //   //         fullName: "Aigerim T",
-  //   //         status: "No status",
-  //   //         location: { city: "Taraz", country: "Kazakhstan" },
-  //   //       },
-  //       ],
+  users: [ ],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -30,6 +18,7 @@ const usersReducer = (state = initialState, action) => {
           return u;
         }),
       };
+
     case UNFOLLOW:
       return {
         ...state,
@@ -40,11 +29,9 @@ const usersReducer = (state = initialState, action) => {
           return u;
         }),
       };
-    case SET_USERS:
-      return {
-        ...state,
-        users: [...state.users, ...action.users],
-      };
+    case SET_USERS: {
+      return { ...state, users: [...state.users, ...action.users] };
+    }
     default:
       return state;
   }
@@ -52,6 +39,6 @@ const usersReducer = (state = initialState, action) => {
 
 export const followAC = (userId) => ({ type: FOLLOW, userId });
 export const unfollowAC = (userId) => ({ type: UNFOLLOW, userId });
-export const setUsersAC = (users) => ({ type: UNFOLLOW, users });
+export const setUsersAC = (users) => ({ type: SET_USERS, users });
 
 export default usersReducer;

@@ -1,43 +1,43 @@
 import React from "react";
-import styles from "./Users.module.css";
-
+import style from './Users.module.css'
 let Users = (props) => {
   if (props.users.length === 0) {
     props.setUsers([
       {
         id: 1,
-        photoUrl:
-          "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkVwz27GAcDQjKnJW1I6zsc6aKTM5SRkZCeTgDn6uOyic",
-        followed: false,
-        fullName: "Aigerim T",
-        status: "No status",
-        location: { city: "Taraz", country: "Kazakhstan" },
-      },
-      {
-        id: 2,
-        photoUrl:
-          "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkVwz27GAcDQjKnJW1I6zsc6aKTM5SRkZCeTgDn6uOyic",
         followed: true,
-        fullName: "Dmitry",
-        status: "React teacher",
-        location: { city: "Minsk", country: "Belarus" },
+        photoUrl:'https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkVwz27GAcDQjKnJW1I6zsc6aKTM5SRkZCeTgDn6uOyic',
+        fullName: "Aigerim",
+        status: "I can do it",
+        location: { city: "T", country: "KZ" },
       },
     ]);
   }
-
   return (
     <div>
       {props.users.map((u) => (
         <div key={u.id}>
           <span>
             <div>
-              <img alt="" src={u.photoUrl} className={styles.userPhoto} />
+              <img src={u.photoUrl} className = {style.userPhoto} />
             </div>
             <div>
               {u.followed ? (
-                <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
+                <button
+                  onClick={() => {
+                    props.unfollow(u.id);
+                  }}
+                >
+                  Unfollow
+                </button>
               ) : (
-                <button onClick={() => props.follow(u.id)}>Follow</button>
+                <button
+                  onClick={() => {
+                    props.follow(u.id);
+                  }}
+                >
+                  Follow
+                </button>
               )}
             </div>
           </span>
